@@ -128,7 +128,6 @@ RC Table::create(Db *db, int32_t table_id, const char *path, const char *name, c
   return rc;
 }
 
-<<<<<<< HEAD
 RC Table::drop(const char *base_dir)
 {
   //刷新脏页
@@ -163,8 +162,6 @@ RC Table::drop(const char *base_dir)
   return rc;
 }
 
-=======
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 RC Table::open(Db *db, const char *meta_file, const char *base_dir)
 {
   // 加载元数据文件

@@ -51,11 +51,7 @@ jobs:
       - name: start server
         shell: bash
         run: |
-<<<<<<< HEAD
-          nohup ./build_release/bin/observer -T ${{ matrix.thread_model }} -s /tmp/miniob.sock -f etc/observer.ini -P mysql -t mvcc -d disk &
-=======
           nohup ./build_release/bin/observer -T ${{ matrix.thread_model }} -s /tmp/miniob.sock -f etc/observer.ini -P mysql -t mvcc -d disk 2>&1 &
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
           sleep 10 && echo "wake up"
           mysql --version
           mysql -S /tmp/miniob.sock -e "show tables"
@@ -67,11 +63,7 @@ jobs:
         run: |
           cd test/sysbench
           sysbench --mysql-socket=/tmp/miniob.sock --mysql-ignore-errors=41 --threads=10 ${{ matrix.test_case }} prepare
-<<<<<<< HEAD
-          sysbench --mysql-socket=/tmp/miniob.sock --mysql-ignore-errors=41 --threads=10 ${{ matrix.test_case }} run || { cat ../../observer.log*; exit 1; }
-=======
           sysbench --mysql-socket=/tmp/miniob.sock --mysql-ignore-errors=41 --threads=10 ${{ matrix.test_case }} run || { cat ../../nohup.txt*; exit 1; }
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 
       - name: stop server
         shell: bash
@@ -83,11 +75,7 @@ jobs:
       - name: restart server
         shell: bash
         run: |
-<<<<<<< HEAD
-          nohup ./build_release/bin/observer -T ${{ matrix.thread_model }} -s /tmp/miniob.sock -f etc/observer.ini -P mysql -t mvcc -d disk &
-=======
           nohup ./build_release/bin/observer -T ${{ matrix.thread_model }} -s /tmp/miniob.sock -f etc/observer.ini -P mysql -t mvcc -d disk 2>&1 &
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
           sleep 10 && echo "wake up"
           mysql -S /tmp/miniob.sock -e "show tables"
 
@@ -95,11 +83,7 @@ jobs:
         shell: bash
         run: |
           cd test/sysbench
-<<<<<<< HEAD
-          sysbench --mysql-socket=/tmp/miniob.sock --mysql-ignore-errors=41 --threads=10 ${{ matrix.test_case }} run || { cat ../../observer.log*; exit 1; }
-=======
           sysbench --mysql-socket=/tmp/miniob.sock --mysql-ignore-errors=41 --threads=10 ${{ matrix.test_case }} run || { cat ../../nohup.txt*; exit 1; }
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 
   benchmark-test:
     runs-on: ubuntu-latest
@@ -161,9 +145,6 @@ jobs:
           nohup ./build_release/bin/observer -T one-thread-per-connection -s /tmp/miniob.sock -f etc/observer.ini -P mysql -t mvcc -d disk &
           sleep 10 && echo "wake up"
           mysql -S /tmp/miniob.sock -e "show tables"
-<<<<<<< HEAD
-            
-=======
   integration-test:
     runs-on: ubuntu-latest
     steps:
@@ -186,5 +167,4 @@ jobs:
           cd test/integration_test/
           bash ./miniob_test_docker_entry.sh
           python3 ./libminiob_test.py -c conf.ini
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 

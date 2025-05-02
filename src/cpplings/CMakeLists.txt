@@ -14,7 +14,4 @@ add_custom_executable(lock lock.cpp)
 add_custom_executable(mutex mutex.cpp)
 add_custom_executable(smart_pointer smart_pointer.cpp)
 add_custom_executable(template template.cpp)
-<<<<<<< HEAD
-=======
 add_custom_executable(stl stl.cpp)
->>>>>>> 95edd11578d5f4a3db1661499768538161848755

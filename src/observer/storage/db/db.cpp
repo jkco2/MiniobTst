@@ -171,7 +171,6 @@ RC Db::create_table(const char *table_name, span<const AttrInfoSqlNode> attribut
   return RC::SUCCESS;
 }
 
-<<<<<<< HEAD
 RC Db::drop_table(const char *table_name)
 {
   RC rc = RC::SUCCESS;
@@ -197,8 +196,6 @@ RC Db::drop_table(const char *table_name)
   return RC::SUCCESS;
 }
 
-=======
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 Table *Db::find_table(const char *table_name) const
 {
   unordered_map<string, Table *>::const_iterator iter = opened_tables_.find(table_name);

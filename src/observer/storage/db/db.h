@@ -69,14 +69,11 @@ public:
       const StorageEngine storage_engine = StorageEngine::HEAP);
 
   /**
-<<<<<<< HEAD
    * @brief 根据表名删除表
    */
   RC drop_table(const char *table_name);
 
   /**
-=======
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
    * @brief 根据表名查找表
    */
   Table *find_table(const char *table_name) const;

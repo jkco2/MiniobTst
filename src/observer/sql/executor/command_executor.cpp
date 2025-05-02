@@ -19,10 +19,7 @@ See the Mulan PSL v2 for more details. */
 #include "sql/executor/create_index_executor.h"
 #include "sql/executor/create_table_executor.h"
 #include "sql/executor/desc_table_executor.h"
-<<<<<<< HEAD
 #include "sql/executor/drop_table_executor.h"
-=======
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
 #include "sql/executor/help_executor.h"
 #include "sql/executor/load_data_executor.h"
 #include "sql/executor/set_variable_executor.h"
@@ -52,14 +49,11 @@ RC CommandExecutor::execute(SQLStageEvent *sql_event)
       rc = executor.execute(sql_event);
     } break;
 
-<<<<<<< HEAD
     case StmtType::DROP_TABLE: {
       DropTableExecutor executor;
       rc = executor.execute(sql_event);
     } break;
 
-=======
->>>>>>> 95edd11578d5f4a3db1661499768538161848755
     case StmtType::ANALYZE_TABLE: {
       AnalyzeTableExecutor executor;
       rc = executor.execute(sql_event);
