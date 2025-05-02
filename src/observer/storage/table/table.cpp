@@ -128,6 +128,43 @@ RC Table::create(Db *db, int32_t table_id, const char *path, const char *name, c
   return rc;
 }
 
+<<<<<<< HEAD
+RC Table::drop(const char *base_dir)
+{
+  //刷新脏页
+  RC rc = sync();
+  if (rc != RC::SUCCESS) return rc;
+  
+  //删除表数据
+  string data_file_path = table_data_file(base_dir, name());
+  if (!filesystem::remove(data_file_path)) {
+    LOG_ERROR("Failed to remove data file. file name=%s, errmsg=%s", data_file_path.c_str(), strerror(errno));
+    return RC::IOERR_WRITE;
+  }
+
+  //删除表索引
+  for (int i=0; i < table_meta_.index_num(); ++i) {
+    string index_file_path = table_index_file(base_dir, name(), table_meta_.index(i)->name());
+    if (!filesystem::remove(index_file_path)) {
+      LOG_ERROR("Failed to remove index file. file name=%s, errmsg=%s", index_file_path.c_str(), strerror(errno));
+      return RC::IOERR_WRITE;
+    }
+  }
+
+  //删除表元数据
+  string meta_file_path = table_meta_file(base_dir, name());
+  if (!filesystem::remove(meta_file_path)) {
+    LOG_ERROR("Failed to remove meta file. file name=%s, errmsg=%s", meta_file_path.c_str(), strerror(errno));
+    return RC::IOERR_WRITE;
+  }
+  
+  //释放内存
+  engine_.reset();
+  return rc;
+}
+
+=======
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
 RC Table::open(Db *db, const char *meta_file, const char *base_dir)
 {
   // 加载元数据文件

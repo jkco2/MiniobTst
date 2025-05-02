@@ -72,9 +72,13 @@ public:
         comparator_(comparator),
         file_reader_(nullptr),
         block_cache_(block_cache)
+<<<<<<< HEAD
+  {}
+=======
   {
     (void)block_cache_;
   }
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
 
   ~ObSSTable() = default;
 
@@ -139,7 +143,11 @@ private:
   unique_ptr<ObFileReader> file_reader_;
   vector<BlockMeta>        block_metas_;
 
+<<<<<<< HEAD
+  [[maybe_unused]] ObLRUCache<uint64_t, shared_ptr<ObBlock>> *block_cache_;
+=======
   ObLRUCache<uint64_t, shared_ptr<ObBlock>> *block_cache_;
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
 };
 
 class TableIterator : public ObLsmIterator

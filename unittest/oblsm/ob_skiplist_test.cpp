@@ -244,8 +244,13 @@ static void RunConcurrentInsert(int write_parallelism = 4) {
   common::ThreadPoolExecutor executor_;
   executor_.init("skiplist_test", write_parallelism, write_parallelism, 60 * 1000);
   common::RandomGenerator rnd;
+<<<<<<< HEAD
+  const int N = 1000;
+  const int kSize = 1000;
+=======
   const int N = 100;
   const int kSize = 10;
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
   for (int i = 0; i < N; i++) {
     TestState* state = new TestState();
     executor_.execute(std::bind(concurrent_reader, state));
@@ -274,4 +279,8 @@ int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755

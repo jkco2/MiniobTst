@@ -60,6 +60,15 @@ public:
       span<const AttrInfoSqlNode> attributes, StorageFormat storage_format, StorageEngine storage_engine);
 
   /**
+<<<<<<< HEAD
+   * 删除一个表
+   * @param base_dir 表数据存放的路径
+   */
+  RC drop(const char *base_dir);
+
+  /**
+=======
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
    * 打开一个表
    * @param meta_file 保存表元数据的文件完整路径
    * @param base_dir 表所在的文件夹，表记录数据文件、索引数据文件存放位置

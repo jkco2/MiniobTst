@@ -59,8 +59,13 @@ bool check_compaction(ObLsm* lsm)
     for (const auto& sstable : level_i) {
       key_ranges.push_back(make_pair(sstable->first_key(), sstable->last_key()));
     }
+<<<<<<< HEAD
+    std::sort(key_ranges.begin(), key_ranges.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
+    ObInternalKeyComparator comp;
+=======
     ObInternalKeyComparator comp;
     std::sort(key_ranges.begin(), key_ranges.end(), [&](const auto& a, const auto& b) { return comp.compare(a.first, b.first) < 0; });
+>>>>>>> 95edd11578d5f4a3db1661499768538161848755
     for (size_t j = 1; j < key_ranges.size(); ++j) {
       if (comp.compare(key_ranges[j].first, key_ranges[j-1].second) < 0) {
         return false;
